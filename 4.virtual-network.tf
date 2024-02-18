@@ -6,7 +6,8 @@ resource "azurerm_virtual_network" "v-net1" {
 
 
   tags = {
-    environment = "development"
+    environment = var.env
+    backup=var.backup
   }
 }
 
