@@ -7,7 +7,7 @@ resource "azurerm_virtual_network" "v-net1" {
 
   tags = {
     environment = var.env
-    backup=var.backup
+    backup      = var.backup
   }
 }
 
