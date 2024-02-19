@@ -4,5 +4,6 @@ resource "azurerm_resource_group" "rg" {
   tags = {
     batch       = var.batch
     environment = var.env
+    proj        = var.proj
   }
 }
