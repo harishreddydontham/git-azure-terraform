@@ -8,6 +8,6 @@ variable "tfstate_storage_account" {}
 variable "account_tier" {}
 variable "account_replication_type" {}
 variable "project" {}
-
-
-
+variable "subnet1_address_prefix" {}
+variable "subnet2_address_prefix" {}
+variable "subnet3_address_prefix" {}
