@@ -8,3 +8,6 @@ account_tier             = "Standard"
 account_replication_type = "LRS"
 backup                   = "yes"
 project                  = "devops"
+subnet1_address_prefix   = ["10.39.1.0/24"]
+subnet2_address_prefix   = ["10.39.2.0/24"]
+subnet3_address_prefix   = ["10.39.3.0/24"]
