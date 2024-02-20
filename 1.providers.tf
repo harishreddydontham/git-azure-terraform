@@ -25,7 +25,7 @@ terraform {
   required_version = ">= 0.13"
 
   backend "azurerm" {
-    resource_group_name  = "testijng"
+    resource_group_name  = "testrg1"
     storage_account_name = "devsecopbsb39tfstate"
     container_name       = "tfstate"
     key                  = "terraform.tfstate"

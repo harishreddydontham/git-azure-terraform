@@ -28,4 +28,3 @@ resource "random_password" "password3" {
   override_special = "!#$%&*()-_=+[]{}<>:?"
   depends_on       = ["random_password.password2"]
 }
-
