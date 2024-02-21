@@ -1,5 +1,5 @@
 
- name: Workflow for running azure terraform code
+  name: Workflow for running azure terraform code
 
  on:
    pull_request:
@@ -66,5 +66,4 @@
       shell: bash
       run: |
        #export TF_LOG="TRACE"
-       terraform init && terraform validate && terraform fmt
-        
+       terraform init && terraform validate && terraform fmt        
