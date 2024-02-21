@@ -66,3 +66,25 @@ jobs:
       run: |
        #export TF_LOG="TRACE"
        terraform init && terraform validate && terraform fmt
+
+  terraform_plan:
+    needs: terraform_init
+    name: 'Running Terraform Plan'
+    runs-on: ubuntu-latest
+    defaults:
+     run:
+       shell: bash
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: List Repo Files
+      run: |
+       ls -al
+       pwd
+       free
+    - name: Perform Terraform Init & Plan
+      id: init
+      shell: bash
+      run: |
+       #export TF_LOG="TRACE"
+       terraform init && terraform plan
