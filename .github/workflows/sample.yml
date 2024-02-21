@@ -109,5 +109,5 @@ jobs:
       shell: bash
       run: |
        #export TF_LOG="TRACE"
-       terraform init && terraform Apply --auto-approve
+       terraform init && terraform apply --auto-approve
        terraform state list
