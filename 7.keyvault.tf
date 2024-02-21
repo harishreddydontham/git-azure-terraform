@@ -51,14 +51,14 @@ resource "azurerm_key_vault_access_policy" "devsecopsb39-sp-access" {
   object_id    = data.azurerm_client_config.current.object_id
 
   secret_permissions = [
-      "Get",
-      "Backup",
-      "Delete",
-      "List",
-      "Purge",
-      "Recover",
-      "Restore",
-      "Set"
+    "Get",
+    "Backup",
+    "Delete",
+    "List",
+    "Purge",
+    "Recover",
+    "Restore",
+    "Set"
 
-    ]
+  ]
 }

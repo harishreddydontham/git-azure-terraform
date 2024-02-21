@@ -1,0 +1,46 @@
+name: Workflow for running azure terraform code
+
+ on:
+   pull_request:
+     branches: [dev]
+     types:[closed]
+   push:
+     branches: [dev]
+
+ env:
+   #TERRAFORM_DESTROY: "YES"
+   ENVIRONMENT: "Development"
+   ARM_CLIENT_ID: ${{secrets.ARM_CLIENT_ID}}
+   ARM_CLIENT_SECRET: ${{secrets.ARM_CLIENT_SECRET}}
+   ARM_SUBSCRIPTION_ID: ${{secrets.ARM_SUBSCRIPTION_ID}}
+   ARM_TENANT_ID: ${{secrets.ARM_TENANT_ID}}
+   ACTIONS_STEP_DEBUG: true
+   PACKER_PRODUCT_VERSION: 1.8.5
+   TERRAFORM_PRODUCT_VERSION: 1.7.3
+
+  jobs:
+  tools_check:
+    name: 'Checking Tools Status'
+    runs-on: ubuntu-latest
+    defaults:
+     run:
+       shell: bash
+    steps:
+    - name: Print Runner Hostname
+      run: hostname
+      shell: bash
+    - name: Print Runner IP Address
+      run: curl -sL https://ipconfig.io
+      shell: bash
+    - name: Setup Terraform with specified version on the runner
+      uses: hashicorp/setup-terraform@v2
+      with:
+        terraform_version: ${{ env.TERRAFORM_PRODUCT_VERSION }}
+    - name: Setup `packer`
+      uses: hashicorp/setup-packer@main
+      id: setup
+      with:
+        version: ${{ env.PACKER_PRODUCT_VERSION }}
+    - name: Check Terraform & Packer Version
+      run: terraform version && packer version
+      shell: bash 
