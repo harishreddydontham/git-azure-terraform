@@ -46,7 +46,7 @@ jobs:
       shell: bash
 
   terraform_init:
-    needs: tools_check
+    needs: tools_checking
     name: 'Files Check & Terraform Init & Validate'
     runs-on: ubuntu-latest
     defaults:
