@@ -1,5 +1,5 @@
 
-name: Workflow for running azure terraform code
+name: Workflow For Running Azure Terraform Code
 
 on:
  pull_request:
@@ -7,7 +7,6 @@ on:
    types: [closed]
  push:
    branches: [dev]
-
 env:
   #TERRAFORM_DESTROY: "YES"
   ENVIRONMENT: "Development"
@@ -20,31 +19,31 @@ env:
   TERRAFORM_PRODUCT_VERSION: 1.7.3
 
 jobs:
-   tools_check:
-     name: 'Checking Tools Status'
-     runs-on: ubuntu-latest
-     defaults:
-      run:
-        shell: bash
-     steps:
-     - name: Print Runner Hostname
-       run: hostname
+  tools_check:
+    name: 'Checking Tools Status'
+    runs-on: ubuntu-latest
+    defaults:
+     run:
        shell: bash
-     - name: Print Runner IP Address
-       run: curl -sL https://ipconfig.io
-       shell: bash
-     - name: Setup Terraform with specified version on the runner
-       uses: hashicorp/setup-terraform@v2
-       with:
-         terraform_version: ${{ env.TERRAFORM_PRODUCT_VERSION }}
-     - name: Setup `packer`
-       uses: hashicorp/setup-packer@main
-       id: setup
-       with:
-         version: ${{ env.PACKER_PRODUCT_VERSION }}
-     - name: Check Terraform & Packer Version
-       run: terraform version && packer version
-       shell: bash 
+    steps:
+    - name: Print Runner Hostname
+      run: hostname
+      shell: bash
+    - name: Print Runner IP Address
+      run: curl -sL https://ipconfig.io
+      shell: bash
+    - name: Setup Terraform with specified version on the runner
+      uses: hashicorp/setup-terraform@v2
+      with:
+        terraform_version: ${{ env.TERRAFORM_PRODUCT_VERSION }}
+    - name: Setup `packer`
+      uses: hashicorp/setup-packer@main
+      id: setup
+      with:
+        version: ${{ env.PACKER_PRODUCT_VERSION }}
+    - name: Check Terraform & Packer Version
+      run: terraform version && packer version
+      shell: bash
 
   terraform_init:
     needs: tools_check
@@ -66,4 +65,4 @@ jobs:
       shell: bash
       run: |
        #export TF_LOG="TRACE"
-       terraform init && terraform validate && terraform fmt        
+       terraform init && terraform validate && terraform fmt
