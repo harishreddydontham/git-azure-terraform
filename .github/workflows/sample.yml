@@ -45,3 +45,26 @@
      - name: Check Terraform & Packer Version
        run: terraform version && packer version
        shell: bash 
+
+  terraform_init:
+    needs: tools_check
+    name: 'Files Check & Terraform Init & Validate'
+    runs-on: ubuntu-latest
+    defaults:
+     run:
+       shell: bash
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: List Repo Files
+      run: |
+       ls -al
+       pwd
+       free
+    - name: Perform Terraform Init validate Format
+      id: init
+      shell: bash
+      run: |
+       #export TF_LOG="TRACE"
+       terraform init && terraform validate && terraform fmt
+        
