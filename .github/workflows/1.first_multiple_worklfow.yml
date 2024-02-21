@@ -2,13 +2,11 @@
 name: Workflow For Running Azure Terraform Code
 
 on:
- workflow_run:
-   workflows:["second_multiple_workflow.yml"]
-      pull_request:
-        branches: [dev]
-        types: [closed]
-      push:
-        branches: [dev]
+ pull_request:
+   branches: [dev]
+   types: [closed]
+ push:
+   branches: [dev]
 env:
   #TERRAFORM_DESTROY: "YES"
   ENVIRONMENT: "Development"
