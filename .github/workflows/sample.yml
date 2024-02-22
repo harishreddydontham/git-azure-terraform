@@ -15,10 +15,10 @@ on:
       ENVIRONMENT:
        description: 'select which subscription you want to deploy'
        required: true
-       default: 'Dev'
+       default: 'dev'
        type: choice
        options:
-       - Dev
+       - dev
        - Production
 env:
   #TERRAFORM_DESTROY: "YES"
