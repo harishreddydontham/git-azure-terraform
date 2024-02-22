@@ -1,9 +1,8 @@
-
-name: Workflow For Running Azure Terraform Code
+name: Workflow3
 
 on:
  workflow_run:
-  workflows: ["second_multiple_workflow"]
+  workflows: ["Workflow2"]
   branches: [dev]
   types:
    - completed
