@@ -1,11 +1,25 @@
 name: Workflow3
 
 on:
- workflow_run:
-  workflows: ["Workflow2"]
-  branches: [dev]
-  types:
-   - completed
+  workflow_dispatch:
+   inputs:
+     TERRAFORM:
+       description: 'shall we run terraform plan/apply/destroy'
+       required: true
+       default: 'PLAN'
+       type: choice
+       options:
+       - PLAN
+       - APPLY
+       - DESTROY
+      ENVIRONMENT:
+       description: 'select which subscription you want to deploy'
+       required: true
+       default: 'Dev'
+       type: choice
+       options:
+       - Dev
+       - Production
 env:
   #TERRAFORM_DESTROY: "YES"
   ENVIRONMENT: "Development"
@@ -20,7 +34,7 @@ env:
 jobs:
   tools_check:
     name: 'Checking Tools Status'
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, terraformb39]
     defaults:
      run:
        shell: bash
