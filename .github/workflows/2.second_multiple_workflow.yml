@@ -4,7 +4,7 @@ name: Workflow For Running Azure Terraform Code
 on:
  workflow_run:
   workflows: ["first_multiple_workflow"]
-  branches: [main]
+  branches: [dev]
   types:
    - completed
 
