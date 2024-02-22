@@ -46,18 +46,18 @@ jobs:
     - name: Print Runner IP Address
       run: curl -sL https://ipconfig.io
       shell: bash
-    - name: Setup Terraform with specified version on the runner
-      uses: hashicorp/setup-terraform@v2
-      with:
-        terraform_version: ${{ env.TERRAFORM_PRODUCT_VERSION }}
-    - name: Setup `packer`
-      uses: hashicorp/setup-packer@main
-      id: setup
-      with:
-        version: ${{ env.PACKER_PRODUCT_VERSION }}
-    - name: Check Terraform & Packer Version
-      run: terraform version && packer version
-      shell: bash
+    # - name: Setup Terraform with specified version on the runner
+    #   uses: hashicorp/setup-terraform@v2
+    #   with:
+    #     terraform_version: ${{ env.TERRAFORM_PRODUCT_VERSION }}
+    # - name: Setup `packer`
+    #   uses: hashicorp/setup-packer@main
+    #   id: setup
+    #   with:
+    #     version: ${{ env.PACKER_PRODUCT_VERSION }}
+    # - name: Check Terraform & Packer Version
+    #   run: terraform version && packer version
+    #   shell: bash
 
   # terraform_init:
   #   needs: tools_check
